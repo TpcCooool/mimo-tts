@@ -1,0 +1,38 @@
+/* ================== Cyber-Neon (赛博霓虹) 主题 ================== */
+[data-theme="cyber-neon"] {
+  /* 极暗背景与高亮文字 */
+  --bg: #050505;
+  --card: #0a0a0c;
+  --text: #e0e0e0;
+  --text-secondary: #8892b0;
+  
+  /* 荧光主色调 */
+  --primary: #00ffcc; /* 霓虹青绿 */
+  --primary-hover: #00e6b8;
+  
+  /* 极细的发光边框 */
+  --border: rgba(0, 255, 204, 0.3);
+  --border-width: 1px;
+  --radius: 4px; /* 锐利的小圆角或直角 */
+  
+  /* 霓虹发光阴影 */
+  --shadow-color: rgba(0, 255, 204, 0.2);
+  --shadow: 0 0 10px var(--shadow-color), inset 0 0 4px var(--shadow-color);
+  --shadow-hover: 0 0 20px rgba(0, 255, 204, 0.4), inset 0 0 8px rgba(0, 255, 204, 0.3);
+  --shadow-active: 0 0 30px rgba(0, 255, 204, 0.6), inset 0 0 12px rgba(0, 255, 204, 0.5);
+  
+  /* 赛博朋克专属字体组合：标题用极具设计感的 Syne，等宽用 JetBrains Mono */
+  --font-family: "Syne", "JetBrains Mono", monospace, sans-serif;
+  
+  /* 高反差的荧光点缀色 */
+  --accent-1: #1a1a1f; /* 极暗的灰蓝色，用于底块 */
+  --accent-2: #ff00ff; /* 霓虹品红，强对比 */
+  --accent-3: #ffea00; /* 霓虹黄 */
+
+  /* 充满科技感的网格背景 */
+  --bg-image: 
+    linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+  --bg-size: 30px 30px;
+  --font-weight-base: 400;
+}

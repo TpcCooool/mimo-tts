@@ -1,0 +1,31 @@
+/* ================== Soft UI 主题 ================== */
+[data-theme="soft-ui"] {
+  --primary: #6c8ee3;
+  --primary-hover: #5b7dd0;
+  --bg: #e0e5ec; /* 典型的 Neumorphism 灰底色 */
+  --card: #e0e5ec; /* 卡片底色与背景同色 */
+  --text: #4a4a4a;
+  --text-secondary: #8a92a3;
+  --border: transparent;
+  --radius: 16px; 
+  --border-width: 0px;
+  --shadow-color: transparent;
+  
+  /* 外阴影（浮起） - 白边与暗边结合 */
+  --shadow: 9px 9px 16px rgb(163, 177, 198, 0.6), -9px -9px 16px rgba(255, 255, 255, 0.5);
+  --shadow-hover: 12px 12px 20px rgb(163, 177, 198, 0.7), -12px -12px 20px rgba(255, 255, 255, 0.6);
+  /* 内阴影（按压） */
+  --shadow-active: inset 6px 6px 10px 0 rgba(163, 177, 198, 0.7), inset -6px -6px 10px 0 rgba(255, 255, 255, 0.8);
+  
+  --font-family: "Nunito", -apple-system, sans-serif;
+  
+  /* 辅助色彩（柔和化，与背景同色以依赖阴影凸显） */
+  --accent-1: #e0e5ec;
+  --accent-2: #e0e5ec;
+  --accent-3: #e0e5ec;
+
+  /* 背景图案 */
+  --bg-image: none;
+  --bg-size: auto;
+  --font-weight-base: 600;
+}

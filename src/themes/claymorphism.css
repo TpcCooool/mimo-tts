@@ -1,0 +1,46 @@
+/* ================== Claymorphism 主题 ================== */
+[data-theme="claymorphism"] {
+  --primary: #ff7e67;
+  --primary-hover: #ff6448;
+  --bg: #f4f6f8; /* 柔和干净的背景底色 */
+  --card: #ffffff; /* 纯白色的黏土块 */
+  --text: #2d3748;
+  --text-secondary: #718096;
+  --border: transparent;
+  
+  /* 黏土特征：极大的圆角 */
+  --radius: 32px; 
+  --border-width: 0px;
+  --shadow-color: transparent;
+  
+  /* 黏土特征：多重内外阴影的组合营造厚重的蓬松感 */
+  /* 1. 外面的柔和投影 2. 内部顶部的高光 3. 内部底部的深色反光 */
+  --shadow: 
+    8px 8px 16px rgba(0, 0, 0, 0.08),
+    inset -6px -6px 12px rgba(0, 0, 0, 0.05),
+    inset 6px 6px 12px rgba(255, 255, 255, 1);
+    
+  --shadow-hover: 
+    12px 12px 24px rgba(0, 0, 0, 0.1),
+    inset -6px -6px 12px rgba(0, 0, 0, 0.05),
+    inset 6px 6px 12px rgba(255, 255, 255, 1);
+    
+  /* 按压时变薄 */
+  --shadow-active: 
+    2px 2px 4px rgba(0, 0, 0, 0.08),
+    inset -3px -3px 6px rgba(0, 0, 0, 0.08),
+    inset 3px 3px 6px rgba(255, 255, 255, 0.8);
+  
+  /* 圆润的可爱字体 */
+  --font-family: "Quicksand", -apple-system, sans-serif;
+  
+  /* 辅助色彩：柔和而明亮的马卡龙色/黏土色 */
+  --accent-1: #e2f0cb; /* 黏土绿 */
+  --accent-2: #ffd3b6; /* 黏土橙 */
+  --accent-3: #ffaaa5; /* 黏土粉 */
+
+  /* 背景图案 */
+  --bg-image: none;
+  --bg-size: auto;
+  --font-weight-base: 600;
+}

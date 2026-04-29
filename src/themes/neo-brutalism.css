@@ -1,0 +1,30 @@
+/* ================== Neo-Brutalism 主题 ================== */
+[data-theme="neo-brutalism"] {
+  --primary: #ff4911;
+  --primary-hover: #e03e0e;
+  --bg: #f4f0ea; 
+  --card: #ffffff;
+  --text: #000000;
+  --text-secondary: #333333;
+  --border: #000000;
+  --radius: 0px; 
+  --border-width: 3px;
+  --shadow-color: #000000;
+  
+  /* 强烈的硬阴影 */
+  --shadow: 6px 6px 0px var(--shadow-color);
+  --shadow-hover: 3px 3px 0px var(--shadow-color);
+  --shadow-active: 0px 0px 0px var(--shadow-color);
+  
+  --font-family: "Space Grotesk", -apple-system, sans-serif;
+  
+  /* 高对比辅助色彩 */
+  --accent-1: #ffd500;
+  --accent-2: #4ade80;
+  --accent-3: #c084fc;
+
+  /* 波点背景图案 */
+  --bg-image: radial-gradient(var(--border) 1px, transparent 1px);
+  --bg-size: 20px 20px;
+  --font-weight-base: 500;
+}
