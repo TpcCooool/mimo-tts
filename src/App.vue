@@ -12,7 +12,6 @@
 <script setup>
 import { ref, computed, watch, onMounted } from 'vue'
 import lamejs from 'lamejs'
-import { Analytics } from '@vercel/analytics/vue'
 
 // ========================================
 // 主题切换逻辑
@@ -720,7 +719,6 @@ async function downloadMp3() {
       </ul>
     </section>
   </div>
-  <Analytics />
 </template>
 
 <style scoped>

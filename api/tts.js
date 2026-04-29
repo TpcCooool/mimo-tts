@@ -24,7 +24,10 @@ export default async function handler(req, res) {
   }
 
   // 优先用页面传来的 key，其次用环境变量
-  const apiKey = req.headers['x-api-key'] || MIMO_API_KEY
+  const pageKey = req.headers['x-api-key']
+  const apiKey = pageKey || MIMO_API_KEY
+  console.log(`[TTS] key来源: ${pageKey ? '页面' : '环境变量'}, 长度: ${apiKey?.length || 0}`)
+
   if (!apiKey || apiKey === 'your_api_key_here') {
     return res.status(400).json({
       error: { message: '请在页面中填写 API Key，或在环境变量中配置 MIMO_API_KEY' }
