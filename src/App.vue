@@ -84,6 +84,24 @@ const voices = [
 ]
 
 // ========================================
+// API Key 管理
+// 页面输入的 key 存 localStorage，优先于环境变量
+// ========================================
+const apiKey = ref('')
+const showApiKey = ref(false)
+
+onMounted(() => {
+  const savedKey = localStorage.getItem('mimo-api-key')
+  if (savedKey) {
+    apiKey.value = savedKey
+  }
+})
+
+watch(apiKey, (val) => {
+  localStorage.setItem('mimo-api-key', val)
+})
+
+// ========================================
 // 响应式状态
 // ========================================
 const currentModel = ref('mimo-v2.5-tts')       // 当前选中的模型 ID
@@ -378,9 +396,13 @@ async function synthesize() {
 
   try {
     console.log('[TTS] 请求中...')
+    const headers = { 'Content-Type': 'application/json' }
+    if (apiKey.value.trim()) {
+      headers['X-Api-Key'] = apiKey.value.trim()
+    }
     const response = await fetch('/api/tts', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers,
       body: JSON.stringify(body)
     })
 
@@ -502,6 +524,17 @@ async function downloadMp3() {
       <span class="header-subtitle">小米 MiMo 语音合成</span>
     </div>
     <div class="header-right">
+      <div class="api-key-wrapper">
+        <input
+          :type="showApiKey ? 'text' : 'password'"
+          class="api-key-input"
+          v-model="apiKey"
+          placeholder="API Key（选填）"
+        />
+        <button class="api-key-toggle" @click="showApiKey = !showApiKey" :title="showApiKey ? '隐藏' : '显示'">
+          {{ showApiKey ? '🙈' : '👁️' }}
+        </button>
+      </div>
       <div class="theme-switcher-wrapper">
         <select class="theme-switcher" v-model="currentTheme">
           <option v-for="theme in themes" :key="theme.id" :value="theme.id">
@@ -679,7 +712,7 @@ async function downloadMp3() {
         <li><strong>VoiceDesign</strong>：通过文字描述自定义音色，无需音频样本。音色描述为必填项</li>
         <li><strong>VoiceClone</strong>：上传音频样本克隆音色，支持 mp3/wav 格式</li>
         <li>文本中可插入音频标签精细控制语音，如 <code>(叹气)唉...</code>、<code>(笑)哈哈哈</code></li>
-        <li>API Key 配置在后端 <code>.env</code> 文件中，前端无需暴露</li>
+        <li>在页面右上角填写自己的 API Key（优先使用），也可通过后端 <code>.env</code> 配置</li>
         <li>
           API 文档：<a href="https://platform.xiaomimimo.com/docs/zh-CN/usage-guide/speech-synthesis-v2.5" target="_blank">MiMo TTS V2.5</a>
         </li>
@@ -725,6 +758,53 @@ async function downloadMp3() {
 }
 .theme-switcher-wrapper {
   position: relative;
+}
+.api-key-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+.api-key-input {
+  padding: 6px 12px;
+  font-size: 13px;
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius) 0 0 var(--radius);
+  background: var(--card);
+  color: var(--text);
+  font-family: inherit;
+  font-weight: 500;
+  width: 160px;
+  outline: none;
+  transition: all 0.2s;
+}
+.api-key-toggle {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: var(--border-width) solid var(--border);
+  border-left: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--card);
+  cursor: pointer;
+  transition: all 0.2s;
+  line-height: 1;
+}
+[data-theme="soft-ui"] .api-key-input,
+[data-theme="claymorphism"] .api-key-input,
+[data-theme="soft-ui"] .api-key-toggle,
+[data-theme="claymorphism"] .api-key-toggle {
+  border: none;
+  box-shadow: var(--shadow-active);
+}
+[data-theme="cyber-neon"] .api-key-input,
+[data-theme="cyber-neon"] .api-key-toggle {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(136, 146, 176, 0.3);
+  color: var(--primary);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+}
+[data-theme="cyber-neon"] .api-key-toggle {
+  border-left: none;
 }
 .theme-switcher {
   padding: 6px 12px;

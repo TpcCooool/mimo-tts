@@ -23,10 +23,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: { message: 'Method Not Allowed' } })
   }
 
-  // 检查 API Key
-  if (!MIMO_API_KEY || MIMO_API_KEY === 'your_api_key_here') {
-    return res.status(500).json({
-      error: { message: '请在 Vercel 环境变量中配置 MIMO_API_KEY' }
+  // 优先用页面传来的 key，其次用环境变量
+  const apiKey = req.headers['x-api-key'] || MIMO_API_KEY
+  if (!apiKey || apiKey === 'your_api_key_here') {
+    return res.status(400).json({
+      error: { message: '请在页面中填写 API Key，或在环境变量中配置 MIMO_API_KEY' }
     })
   }
 
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${MIMO_API_KEY}`
+        'Authorization': `Bearer ${apiKey}`
       },
       body: JSON.stringify(req.body)
     })
