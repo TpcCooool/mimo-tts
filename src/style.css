@@ -1,0 +1,40 @@
+/* ========================================
+   全局样式 & CSS 变量 (Neo-Brutalism)
+   ======================================== */
+:root {
+  --primary: #ff4911;
+  --primary-hover: #e03e0e;
+  --bg: #f4f0ea; /* 灰米色背景，带有原始感 */
+  --card: #ffffff;
+  --text: #000000;
+  --text-secondary: #333333;
+  --border: #000000;
+  --radius: 0px; /* 粗野主义通常无圆角或很小的圆角 */
+  --border-width: 3px;
+  --shadow-color: #000000;
+  --shadow: 6px 6px 0px var(--shadow-color);
+  --shadow-hover: 3px 3px 0px var(--shadow-color);
+  --shadow-active: 0px 0px 0px var(--shadow-color);
+  
+  /* 辅助色彩 */
+  --accent-1: #ffd500;
+  --accent-2: #4ade80;
+  --accent-3: #c084fc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  background: var(--bg);
+  background-image: radial-gradient(var(--border) 1px, transparent 1px);
+  background-size: 20px 20px;
+  color: var(--text);
+  min-height: 100vh;
+  font-weight: 500;
+}
